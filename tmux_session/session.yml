@@ -1,0 +1,15 @@
+name: ros_commands
+root: ./
+socket_name: mrs
+attach: false
+tmux_options: -f /etc/ctu-mrs/tmux.conf
+startup_window: Docker
+
+windows:
+  - Docker:
+      layout: tiled
+      synchronize: after
+      panes:
+        - cd ~/git/mrs_docker_lazy/uvdar_stack/stack60 && export DOCKER_HOST=tcp://192.168.69.160:2375
+        - cd ~/git/mrs_docker_lazy/uvdar_stack/stack65 && export DOCKER_HOST=tcp://192.168.69.165:2375
+        # - cd ~/git/mrs_docker_lazy/uvdar_stack/stack66 && export DOCKER_HOST=tcp://192.168.69.166:2375

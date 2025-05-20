@@ -1,0 +1,25 @@
+#TODO: take OUTPUT_IMAGE and EXPORT_PATH from common_vars.sh 
+
+- name: Transfer and load Docker image via SSH
+  hosts: remote #all
+  become: yes
+  serial: 0  # Run one machine at a time
+  tasks:
+
+    - name: Copy Docker image to remote machine
+      ansible.builtin.copy:
+        src: "~/docker/uav_custom_files:uvdar.tar.gz"
+
+        dest: "/tmp/tmp_img.tar.gz"
+        mode: '0644'
+
+    - name: Load Docker image on remote machine
+      ansible.builtin.shell: docker load -i /tmp/tmp_img.tar.gz
+      register: docker_load_output
+
+    - name: Show Docker load output
+      ansible.builtin.debug:
+        msg: "{{ docker_load_output.stdout }}"
+
+
+

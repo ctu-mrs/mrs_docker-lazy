@@ -1,0 +1,23 @@
+image_width: 1280
+image_height: 800
+camera_name: camera_down_throttled
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [652.3200439284416, 0, 686.2507880970253, 0, 651.8750412101568, 388.4771036114393,
+    0, 0, 1.0]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [-0.45895319315914807, 0.138055248457019, -0.0014191405041921513, 0.0013026202626815334,
+    0.0]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [404.08978271484375, 0.0, 690.4298919917564, 0.0, 0.0, 402.9295654296875,
+    386.4548409238341, 0.0, 0.0, 0.0, 1.0, 0.0]

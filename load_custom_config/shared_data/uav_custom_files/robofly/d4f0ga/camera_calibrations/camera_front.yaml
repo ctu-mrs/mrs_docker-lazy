@@ -1,0 +1,23 @@
+image_width: 728
+image_height: 544
+camera_name: camera_front_throttled
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [914.74207225617, 0, 348.7044650940661, 0, 908.3364353654043, 243.97459204465198,
+    0, 0, 1.0]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [-0.6151921266888174, 0.34469401500431746, 0.015319883779764728, 0.002815032453793013,
+    0.0]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [746.6422729492188, 0.0, 346.219287677357, 0.0, 0.0, 740.8782348632812, 250.59571223564672,
+    0.0, 0.0, 0.0, 1.0, 0.0]
