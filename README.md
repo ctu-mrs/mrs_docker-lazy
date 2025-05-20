@@ -1,6 +1,6 @@
-# 🐢 mrs_docker_lazy
+# 🐢 mrs_docker-lazy
 
-**mrs_docker_lazy** offers a smooth and efficient workflow for Docker users especially when managing multiple remote machines.
+**mrs_docker-lazy** offers a smooth and efficient workflow for Docker users especially when managing multiple remote machines.
 
 ---
 
@@ -17,7 +17,7 @@ Ensure the following are installed on your **local** machine:
 
 - [Docker](https://www.docker.com/)
 - [LazyDocker](https://github.com/jesseduffield/lazydocker)
-- [Ansible](https://www.ansible.com/)
+- [Ansible](https://www.ansible.com/) 
 - [Tmuxinator](https://github.com/tmuxinator/tmuxinator)
 
 
@@ -30,7 +30,7 @@ Ensure the following are installed on your **local** machine:
 ### 1. Clone the Repository
 
 ```bash
-git clone git@github.com:manuelboldrer/mrs_docker_lazy.git ~/git/mrs_docker_lazy
+git clone git@github.com:manuelboldrer/mrs_docker-lazy.git ~/git/mrs_docker-lazy
 ```
 
 ### 2. Prepare the Remote Machine(s)
@@ -71,7 +71,7 @@ Verify the service is active.
 
 ### 1. Create and Load Docker Images to Remote Machines
 
-If you're not using DockerHub or a local registry:
+If do not want to DockerHub or a local registry, a nice alternative is to use Ansible:
 
 - Edit `inventory.ini` to include remote IPs and usernames.
 - Add your image folder to `load_custom_config/shared_data/`.
@@ -81,7 +81,7 @@ If you're not using DockerHub or a local registry:
 ./run_all.sh
 ```
 
-> ⚙️ In `build_image.sh`, `export_image.sh`, and `image_loader/load_docker_image.yml`, be sure to set the correct **image name**.
+> ⚙️ In `build_image.sh`, `export_image.sh`, and `image_loader/load_docker_image.yml`, be sure to set the correct **image name**. (it should be fixed)
 
 ### 2. Compile Workspace (arm64/amd64), Create and Load Docker Images to Remote Machines
 
@@ -112,3 +112,6 @@ cd tmux_session
 > 🐞 **Note:** Lazydocker can be buggy in "stack" mode (if you run it in the same directory as the Docker Compose file). Change directory if it misbehaves.  
 > ⚙️ You can run custom commands within Lazydocker (check the config in the `lazydocker/` folder). For more check [LazyDocker Docs](https://github.com/jesseduffield/lazydocker)
 
+### 5. Example of Workflow with two roboflies
+
+TOADD gif
