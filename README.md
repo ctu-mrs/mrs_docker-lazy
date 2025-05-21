@@ -113,6 +113,5 @@ cd tmux_session
 > ⚙️ You can run custom commands within Lazydocker (check the config in the `lazydocker/` folder). For more check [LazyDocker Docs](https://github.com/jesseduffield/lazydocker)
 
 ### 5. Example of Workflow with two roboflies
-<video width="640" height="360" controls>
-  <source src="docker-lazy-2025-05-21_08.56.40.mp4" type="video/mp4">
-</video>
+[![Watch on YouTube](https://youtu.be/Z_iTzb2265M)](https://youtu.be/Z_iTzb2265M)
+
