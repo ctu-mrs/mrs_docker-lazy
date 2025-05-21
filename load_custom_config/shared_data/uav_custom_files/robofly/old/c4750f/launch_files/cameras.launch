@@ -1,0 +1,16 @@
+<launch>
+
+  <arg name="standalone" default="false" />
+  <arg name="throttled_rate" default="5.0" />
+
+  <include file="$(dirname)/camera_down.launch">
+    <arg name="standalone" value="$(arg standalone)" />
+    <arg name="throttled_rate" value="$(arg throttled_rate)" />
+  </include>
+
+  <include file="$(dirname)/camera_front.launch">
+    <arg name="standalone" value="$(arg standalone)" />
+    <arg name="throttled_rate" value="$(arg throttled_rate)" />
+  </include>
+
+</launch>
