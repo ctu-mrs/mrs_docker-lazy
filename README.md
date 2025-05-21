@@ -15,9 +15,9 @@
 
 Ensure the following are installed on your **local** machine:
 
-- [Docker](https://www.docker.com/)
+- [Docker](https://docs.docker.com/engine/install/)
 - [LazyDocker](https://github.com/jesseduffield/lazydocker)
-- [Ansible](https://www.ansible.com/) 
+- [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html) 
 - [Tmuxinator](https://github.com/tmuxinator/tmuxinator)
 
 
