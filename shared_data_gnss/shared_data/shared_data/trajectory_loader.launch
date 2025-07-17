@@ -1,0 +1,24 @@
+<launch>
+
+  <arg name="uav_name" default="$(optenv UAV_NAME uav)" />
+  <arg name="mode" default="load" />
+  <arg name="path" default="$(dirname)/trajectories" />
+  <arg name="file" default="" />
+
+	<group ns="$(arg uav_name)">
+
+		<node name="trajectory_loader" pkg="mrs_uav_trajectory_loader" type="trajectory_loader" output="screen" >
+
+      <rosparam file="$(dirname)/trajectory_loader.yaml" />
+
+			<param name="uav_name" type="string" value="$(arg uav_name)" />	
+      <param name="mode" type="string" value="$(arg mode)" />
+    
+      <param name="trajectory/base_path" type="string" value="$(arg path)" />	
+      <param name="trajectory/filename" type="string" value="$(arg file)" />
+
+    </node>
+
+	</group>
+
+</launch>

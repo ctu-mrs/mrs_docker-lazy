@@ -1,0 +1,33 @@
+- all set up for ctu_mrs_8
+- wifi switcher works
+
+- MRS10 = uav69 = .169
+  - Portainer: https://uav69:9443
+    - login: admin, passwd: admin
+    - Robofly->stacks->eagle
+    - TODO
+      - rewrite world file to cisar.yaml in the online editor
+  - ssh uav@192.168.69.169, password: f4f
+    - TODO add your laptop's hostname to /etc/hosts
+  - mag calibrated
+
+- MRS09 = uav61 = .161
+  - Portainer: https://uav61:9443
+    - login: admin, passwd: admin
+    - Robofly->stacks->eagle
+    - TODO
+      - rewrite world file to cisar.yaml in the online editor
+  - ssh uav@192.168.69.161, password: f4f
+    - TODO add your laptop's hostname to /etc/hosts
+  - mag calibrated
+
+- MRS03 = uav62 = .162
+  - GNSS problem!!!
+  - Portainer: https://uav62:9443
+    - login: admin, passwd: admin
+    - Robofly->stacks->eagle
+    - TODO
+      - rewrite world file to cisar.yaml in the online editor
+  - ssh uav@192.168.69.162, password: f4f
+    - TODO add your laptop's hostname to /etc/hosts
+  - mag calibrated

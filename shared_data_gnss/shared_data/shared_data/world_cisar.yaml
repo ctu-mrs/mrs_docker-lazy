@@ -28,10 +28,10 @@ safety_area:
     # x, y [m] for any frame_name except latlon_origin
     # x = latitude, y = longitude [deg]  for frame_name=="latlon_origin"
     points: [
-      30.9, 26.4,
-      -45.0, 7.27,
-      -31.5, -38.0,
-      44.5, -23.5,
+      110.55, -40.4,
+      84.55, 63.6,
+      -203.45, 11.6,
+      -75.45, -84.4,
     ]
 
     # # race track extended

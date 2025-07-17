@@ -17,10 +17,10 @@ mrs_uav_managers:
       after_takeoff:
         controller: "Se3Controller"
 
-      takeoff_height: 10.0
-      
       during_takeoff:
         controller: "Se3Controller"
+
+      takeoff_height: 3.0
 
     midair_activation:
 
@@ -40,3 +40,16 @@ mrs_uav_managers:
       mass_estimator:
 
         km: 0.50 # [kg/s], mass estimator max rate
+
+  constraint_manager:
+
+    # list of allowed constraints per odometry mode
+    allowed_constraints:
+      gps_garmin: ["slow", "medium", "fast"]
+      gps_baro: ["slow", "medium", "fast"]
+      rtk: ["slow", "medium", "fast"]
+
+    default_constraints:
+      gps_garmin: "fast"
+      gps_baro: "fast"
+      rtk: "fast"

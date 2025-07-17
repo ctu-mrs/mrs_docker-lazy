@@ -3,7 +3,7 @@ preflight_check:
   # takeoff not allowed if UAV's speed exceeds <max_speed>
   speed_check:
 
-    enabled: true
+    enabled: false
 
     # RoboFly's barometer is of poor quality, therefore, the z-axis velocity estimate is bad
     # setting this higher than the default (0.3) will mitigate unwanted automatic start shutdowns
