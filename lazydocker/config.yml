@@ -66,17 +66,20 @@ stats:
 
 customCommands:
   containers:
+  - name: bash
+    attach: true
+    command: docker exec -it {{ .Container.ID }} /bin/sh
+  - name: rosbash
+    attach: true
+    command: "docker exec -it {{ .Container.ID }} /bin/bash -c 'source /opt/ros/noetic/setup.bash; bash'"
+  - name: logs
+    attach: true
+    command: docker logs -f {{ .Container.ID }} 
   - name: removeall
     attach: true
     # command: docker container prune -foa
     # command: "docker ps -aq | xargs -I {} docker rm -f {}"
     command: "/bin/zsh -c 'docker rm -f $(docker ps -aq)'"
-  - name: bash
-    attach: true
-    command: docker exec -it {{ .Container.ID }} /bin/sh
-  - name: logs
-    attach: true
-    command: docker logs -f {{ .Container.ID }} 
   images:
     - name: "Run Image with Custom Command"
       command: "script -q -c 'docker run --rm -it {{ .Image.Name }}:{{ .Image.Tag }} /bin/sh' /dev/null"
