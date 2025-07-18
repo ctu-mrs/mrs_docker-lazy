@@ -111,6 +111,8 @@ cd tmux_session
 
 > 🐞 **Note:** Lazydocker can be buggy in "stack" mode (if you run it in the same directory as the Docker Compose file). Change directory if it misbehaves.  
 > ⚙️ You can run custom commands within Lazydocker (check the config in the `lazydocker/` folder). For more check [LazyDocker Docs](https://github.com/jesseduffield/lazydocker)
+> 📡 To not rely on internet you can pull the images from a local registry. For example, run registry.sh, it will create your registry with the alpine image. Then for instance in your shared_data_gnss specify in the Dockerfile: FROM localhost:5000/alpine 
+> 👜 To save rosbags, first use the custom command added in the lazydocker config.yml (this allow to properly stop the rosbag container, avoiding the .active. If you want to keep the rosbags change the script down.sh in such a way it does not delete volumes. 
 
 ### 5. Example of Workflow with two roboflies
 [![Watch on YouTube](https://youtu.be/Z_iTzb2265M)](https://youtu.be/Z_iTzb2265M)
