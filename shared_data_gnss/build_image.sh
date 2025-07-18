@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 set -e
 
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
@@ -24,9 +25,15 @@ ARCH=arm64 # robofly
 ## |                            build                           |
 ## --------------------------------------------------------------
 
+if docker pull localhost:5000/alpine &> /dev/null; then
+  PATHD='local/Dockerfile'
+else
+  PATHD='Dockerfile'
+fi
+
 docker buildx use default
 
-docker buildx build . --file Dockerfile --tag $LOCAL_TAG --platform=linux/${ARCH} --no-cache
+docker buildx build . --file ${PATHD} --tag $LOCAL_TAG --platform=linux/${ARCH} --no-cache
 
 echo ""
 echo "$0: shared data were packed into '$LOCAL_TAG'"
