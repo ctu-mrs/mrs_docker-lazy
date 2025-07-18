@@ -109,7 +109,7 @@ cd tmux_session
 ./up.sh && lazydocker
 ```
 
-> 🐞 **Note:** Lazydocker can be buggy in "stack" mode (if you run it in the same directory as the Docker Compose file). Change directory if it misbehaves.  
+> 🐞 **Note:** Lazydocker can be buggy in "stack" mode (if you run it in the same directory as the Docker Compose file, the logs are not shown sometimes). Change directory if it misbehaves. 
 
 > ⚙️ You can run custom commands within Lazydocker (check the config in the `lazydocker/` folder). For more check [LazyDocker Docs](https://github.com/jesseduffield/lazydocker)
 
