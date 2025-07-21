@@ -23,24 +23,24 @@ safety_area:
     # the frame of reference in which the points are expressed
     frame_name: "world_origin"
 
-    # polygon
-    #
-    # x, y [m] for any frame_name except latlon_origin
-    # x = latitude, y = longitude [deg]  for frame_name=="latlon_origin"
-    points: [
-      110.55, -40.4,
-      84.55, 63.6,
-      -203.45, 11.6,
-      -75.45, -84.4,
-    ]
+    ## polygon
+    ##
+    ## x, y [m] for any frame_name except latlon_origin
+    ## x = latitude, y = longitude [deg]  for frame_name=="latlon_origin"
+    #points: [
+    #  110.55, -40.4,
+    #  84.55, 63.6,
+    #  -203.45, 11.6,
+    #  -75.45, -84.4,
+    #]
 
-    # # race track extended
-    # points: [
-    #   44.8, -26.4,
-    #   31.8, 25.6,
-    #   -112.2, -0.4,
-    #   -48.2, -48.4,
-    # ]
+    # race track extended
+    points: [
+      44.8, -26.4,
+      31.8, 25.6,
+      -112.2, -0.4,
+      -48.2, -48.4,
+    ]
 
     # # mezi stromy a lampou
     # points: [
