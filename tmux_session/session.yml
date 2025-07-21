@@ -3,13 +3,27 @@ root: ./
 socket_name: mrs
 attach: false
 tmux_options: -f /etc/ctu-mrs/tmux.conf
-startup_window: Docker
+startup_window: lazydocker
+pre_window: cd "/home/matous/git/mrs_docker-lazy/stacks/stack$UAV_NUMBER"; export UAV_NAME="uav$UAV_NUMBER"; export DOCKER_HOST="tcp://192.168.69.1$UAV_NUMBER:2375"; export ROS_MASTER_URI="http://192.168.69.1$UAV_NUMBER:11311"
 
 windows:
   - Docker:
       layout: tiled
       synchronize: after
       panes:
-        - cd ~/git/mrs_docker-lazy/stacks/stack63 && export DOCKER_HOST=tcp://192.168.69.163:2375
-        - cd ~/git/mrs_docker-lazy/stacks/stack64 && export DOCKER_HOST=tcp://192.168.69.164:2375
-        # - cd ~/git/mrs_docker-lazy/uvdar_stack/stack66 && export DOCKER_HOST=tcp://192.168.69.166:2375
+        - ./up.sh
+  - lazydocker:
+      layout: tiled
+      synchronize: after
+      panes:
+        - /home/matous/Programs/lazydocker
+  - goto_start:
+      layout: tiled
+      synchronize: after
+      panes:
+        - history -s rosservice call /uav68/control_manager/goto_trajectory_start
+  - start_tracking:
+      layout: tiled
+      synchronize: after
+      panes:
+        - history -s rosservice call /uav68/control_manager/start_trajectory_tracking
