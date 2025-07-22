@@ -1,5 +1,15 @@
 #!/bin/bash
 
+if [ $# -ne 1 ]; then
+  echo "Please provide the UAV number"
+  read UAV_NUMBER
+else
+  UAV_NUMBER=$1
+fi
+
+export UAV_NUMBER=$UAV_NUMBER
+echo "The UAV number is $UAV_NUMBER"
+
 # Absolute path to this script. /home/user/bin/foo.sh
 SCRIPT=$(readlink -f $0)
 # Absolute path this script is in. /home/user/bin
