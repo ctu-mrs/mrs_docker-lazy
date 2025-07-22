@@ -1,0 +1,10 @@
+* one doesn't have MRS UAV setup
+* one doesn't even have an SD card in Raspberry Pi
+* one doesn't have PixHawk SD card setup
+* 68A-I doesn't have PixHawk setup at all (not even the thermal parameters)
+
+62A-I: calibrated, RC in PX setup, one motor doesn't spin
+68A-I: no thermal calibration
+68B-I: calibrated, RC in PX setup, manual OK, autonomous OK
+69A-I: calibrated, RC in PX setup, manul OK-ish, autonomous OK
+69B-I: calibrated 2x, RC in PX setup, manual OK, autonomous whirpools (1m radius)
