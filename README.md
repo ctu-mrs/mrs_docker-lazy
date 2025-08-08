@@ -111,11 +111,12 @@ cd tmux_session
 ./up.sh && lazydocker
 ```
 
-> 🐞 **Note:** Lazydocker can be buggy in "stack" mode (if you run it in the same directory as the Docker Compose file, the logs are not shown sometimes). Change directory if it misbehaves. 
+> 🐞 **Note:** Lazydocker can be buggy in showing the logs. Not sure why, in that case you can invoke the custom command `logs` to see the logs of the containers.
+or go to the stack pane in the Lazydocker session to see all the logs at the same time.
 
 > ⚙️ You can run custom commands within Lazydocker (check the config in the `lazydocker/` folder). For more check [LazyDocker Docs](https://github.com/jesseduffield/lazydocker)
 
-> 📡 To not rely on internet you can pull the images from a local registry. For example, run registry.sh, it will create your registry with the alpine image. Then for instance in your shared_data_gnss specify in the Dockerfile: FROM localhost:5000/alpine. 
+> 📡 To not rely on internet you can pull the images from a local registry. For example, run registry.sh, it will create your registry with the alpine image. This is necessary only in cross platform scenarios. In case of both amd64 machine it is sufficient to have the image on your machine.
 
 > 👜 To save rosbags, first use the custom command added in the lazydocker config.yml (this allow to properly stop the rosbag container, avoiding the .active. If you want to keep the rosbags change the script down.sh in such a way it does not delete volumes. 
 
