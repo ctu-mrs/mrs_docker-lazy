@@ -35,7 +35,7 @@ git clone git@github.com:manuelboldrer/mrs_docker-lazy.git ~/git/mrs_docker-lazy
 
 ### 2. Prepare the Remote Machine(s)
 
-- Install **Docker**.
+- Install **Docker**. `./install-docker.sh`
 - Ensure the **public SSH key** is added to `~/.ssh/authorized_keys`.  
   You can use:
 
@@ -43,7 +43,9 @@ git clone git@github.com:manuelboldrer/mrs_docker-lazy.git ~/git/mrs_docker-lazy
 ssh-copy-id -i ~/.ssh/ansible remote_user@192.168.69.1xx
 ```
 
-- Enable remote access to Docker:
+- Enable remote access to Docker. `./docker-host-settings.sh`
+
+or do it manually:
 
 ```bash
 sudo systemctl edit docker.service
@@ -65,8 +67,8 @@ sudo systemctl restart docker.service
 
 Verify the service is active.
 
----
 
+---
 ## 🚀 Usage
 
 ### 1. Create and Load Docker Images to Remote Machines
