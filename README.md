@@ -37,7 +37,7 @@ git clone git@github.com:manuelboldrer/mrs_docker-lazy.git ~/git/mrs_docker-lazy
 
 - Install **Docker**. `./install-docker.sh`
 - Ensure the **public SSH key** is added to `~/.ssh/authorized_keys`.  
-  You can use:
+  You can use the following command (from your machine):
 
 ```bash
 ssh-copy-id -i ~/.ssh/ansible remote_user@192.168.69.1xx
@@ -119,6 +119,4 @@ cd tmux_session
 
 > 👜 To save rosbags, first use the custom command added in the lazydocker config.yml (this allow to properly stop the rosbag container, avoiding the .active. If you want to keep the rosbags change the script down.sh in such a way it does not delete volumes. 
 
-### 5. Example of Workflow with two roboflies
-[![Watch on YouTube](https://youtu.be/Z_iTzb2265M)](https://youtu.be/Z_iTzb2265M)
 
