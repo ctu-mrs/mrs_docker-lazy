@@ -30,7 +30,7 @@ Ensure the following are installed on your **local** machine:
 ### 1. Clone the Repository
 
 ```bash
-git clone git@github.com:manuelboldrer/mrs_docker-lazy.git ~/git/mrs_docker-lazy
+git clone git@github.com:ctu-mrs/mrs_docker-lazy.git ~/git/mrs_docker-lazy
 ```
 
 ### 2. Prepare the Remote Machine(s)
