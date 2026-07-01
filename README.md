@@ -10,14 +10,15 @@
 - 🌐 Scalable across multiple remote machines
 - 🚫 Never SSH: you can work always on your local machine
 - 📡 No Internet needed.
- 
+
 ## 🐳 Requirements
 
 Ensure the following are installed on your **local** machine:
 
 - [Docker](https://docs.docker.com/engine/install/)
+    - Use the install script in this repository!
 - [LazyDocker](https://github.com/jesseduffield/lazydocker)
-- [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html) 
+- [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html)
 - [Tmuxinator](https://github.com/tmuxinator/tmuxinator)
 
 
@@ -36,7 +37,7 @@ git clone git@github.com:ctu-mrs/mrs_docker-lazy.git ~/git/mrs_docker-lazy
 ### 2. Prepare the Remote Machine(s)
 
 - Install **Docker**. `./install-docker.sh`
-- Ensure the **public SSH key** is added to `~/.ssh/authorized_keys`.  
+- Ensure the **public SSH key** is added to `~/.ssh/authorized_keys`.
   You can use the following command (from your machine):
 
 ```bash
@@ -93,7 +94,7 @@ Place your workspace inside:
 catkin_workspace_uvdar/src
 ```
 
-change `inventory.ini` and `common_vars.sh` properly and run `./run_all.sh` 
+change `inventory.ini` and `common_vars.sh` properly and run `./run_all.sh`
 
 ### 3. Start TMUX Session
 
@@ -118,6 +119,6 @@ or go to the stack pane in the Lazydocker session to see all the logs at the sam
 
 > 📡 To not rely on internet you can pull the images from a local registry. For example, run registry.sh, it will create your registry with the alpine image. This is necessary only in cross platform scenarios. In case of both amd64 machine it is sufficient to have the image on your machine.
 
-> 👜 To save rosbags, first use the custom command added in the lazydocker config.yml (this allow to properly stop the rosbag container, avoiding the .active. If you want to keep the rosbags change the script down.sh in such a way it does not delete volumes. 
+> 👜 To save rosbags, first use the custom command added in the lazydocker config.yml (this allow to properly stop the rosbag container, avoiding the .active. If you want to keep the rosbags change the script down.sh in such a way it does not delete volumes.
 
 
