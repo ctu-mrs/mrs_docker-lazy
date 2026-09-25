@@ -1,24 +1,34 @@
-#TODO: take OUTPUT_IMAGE and EXPORT_PATH from common_vars.sh 
-
 - name: Transfer and load Docker image via SSH
   hosts: remote
   become: yes
   serial: 0  # Run one machine at a time
+
+  vars:
+    # exported by common_vars.sh, which ./load_image.sh sources before calling us
+    output_image: "{{ lookup('env', 'OUTPUT_IMAGE') }}"
+    export_path: "{{ lookup('env', 'EXPORT_PATH') }}"
+    image_archive: "{{ output_image }}.tar.gz"
+
   tasks:
+
+    - name: Check that the image variables are set
+      ansible.builtin.assert:
+        that:
+          - output_image | length > 0
+          - export_path | length > 0
+        fail_msg: "OUTPUT_IMAGE and EXPORT_PATH are not set, run this playbook through ./load_image.sh"
+      run_once: true
 
     - name: Copy Docker image to remote machine
       ansible.builtin.copy:
-        src: "~/docker/uvdar_workspacel:1.0.1.tar.gz"
-        dest: "/tmp/uvdar_workspacel:1.0.1.tar.gz"
+        src: "{{ export_path }}/{{ image_archive }}"
+        dest: "/tmp/{{ image_archive }}"
         mode: '0644'
 
     - name: Load Docker image on remote machine
-      ansible.builtin.shell: docker load -i /tmp/rbl_controller_3d-test_image:1.0.0.tar.gz
+      ansible.builtin.shell: docker load -i "/tmp/{{ image_archive }}"
       register: docker_load_output
 
     - name: Show Docker load output
       ansible.builtin.debug:
         msg: "{{ docker_load_output.stdout }}"
-
-
-
