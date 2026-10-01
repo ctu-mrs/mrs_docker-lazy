@@ -10,6 +10,5 @@ windows:
       layout: tiled
       synchronize: after
       panes:
-        - cd ~/git/mrs_docker-lazy/stacks/stack63 && export DOCKER_HOST=tcp://192.168.69.163:2375
-        - cd ~/git/mrs_docker-lazy/stacks/stack64 && export DOCKER_HOST=tcp://192.168.69.164:2375
-        # - cd ~/git/mrs_docker-lazy/uvdar_stack/stack66 && export DOCKER_HOST=tcp://192.168.69.166:2375
+        - UAV_NUM=63 && export DOCKER_HOST=tcp://192.168.69.1$UAV_NUM:2375 && cd ../stacks/stack$UAV_NUM && ./down.sh && ./up.sh && lazydocker
+        - UAV_NUM=64 && export DOCKER_HOST=tcp://192.168.69.1$UAV_NUM:2375 && cd ../stacks/stack$UAV_NUM && ./down.sh && ./up.sh && lazydocker
