@@ -106,12 +106,6 @@ cd tmux_session
 ./start.sh
 ```
 
-### 4. Run in Synchronous Mode
-
-```bash
-./up.sh && lazydocker
-```
-
 > 🐞 **Note:** Lazydocker can be buggy in showing the logs. Not sure why, in that case you can invoke the custom command `logs` to see the logs of the containers.
 or go to the stack pane in the Lazydocker session to see all the logs at the same time.
 
