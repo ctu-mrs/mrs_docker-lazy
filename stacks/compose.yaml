@@ -2,6 +2,8 @@ volumes:
 
   shared_data:
 
+  catkin_workspace:
+
   uav_custom_files:
 
   bag_files:
@@ -17,6 +19,14 @@ services:
       - shared_data:/tmp/docker/shared_data:consistent
     tty: true
     command: sh -c "rm -rvf /tmp/docker/shared_data/*; mkdir -pv /tmp/docker/shared_data; cp -rv /etc/docker/shared_data/* /tmp/docker/shared_data/"
+
+  # will copy the user's ROS catkin workspace from the 'transfer' image to a shared volume
+  copy_catkin_workspace:
+    image: ${CUSTOM_WORKSPACE_IMAGE}
+    volumes:
+      - catkin_workspace:/tmp/docker/catkin_workspace:consistent
+    tty: true
+    command: sh -c "mkdir -pv /tmp/docker/catkin_workspace; find /tmp/docker/catkin_workspace -mindepth 1 -delete; cp -av /etc/docker/catkin_workspace/. /tmp/docker/catkin_workspace/"
 
   # will copy uav-specific configs, launch files and other files from the uav-specific docker image to a shared volume
   copy_uav_custom_files:
@@ -35,6 +45,7 @@ services:
     depends_on:
       - copy_shared_data
       - copy_uav_custom_files
+      - copy_catkin_workspace
     env_file:
       - ./stack.env
     tty: true
@@ -90,14 +101,43 @@ services:
   #   volumes:
   #     - shared_data:/etc/docker/shared_data:consistent
   #     - uav_custom_files:/etc/docker/uav_custom_files:consistent
+  #     - /sys:/sys
   #   devices:
   #     - /dev/:/dev/
   #   privileged: true
   #   env_file:
   #     - ./stack.env
   #   tty: true
-  #   command: bash -c "waitForTime && roslaunch /etc/docker/uav_custom_files/launch_files/cameras.launch"
+  #   # command: bash -c "waitForTime && roslaunch /etc/docker/uav_custom_files/launch_files/cameras.launch"
+  #   # The ov9282 power-on is unreliable: the I2C write to MIPI_CTRL00 fails on
+  #   # most power-up cycles, so the driver either fails to probe or fails at
+  #   # stream start ("stream on failed in subdev"). Retry the bind until the
+  #   # sensor probes, then pin runtime PM on so it is never powered down again
+  #   # -- it is the second power-on that reliably fails.
+  #   command: >
+  #     bash -c "waitForTime &&
+  #     for i in $$(seq 1 20); do
+  #       [ -e /sys/bus/i2c/drivers/ov9282/4-0060 ] && break;
+  #       echo 4-0060 > /sys/bus/i2c/drivers/ov9282/bind 2>/dev/null;
+  #       sleep 1;
+  #     done &&
+  #     echo on > /sys/bus/i2c/devices/4-0060/power/control &&
+  #     roslaunch /etc/docker/uav_custom_files/launch_files/camera_back.launch"
 
+  # custom_node:
+  #   image: ctumrs/mrs_uav_system:${MRS_UAV_SYSTEM_VERSION}
+  #   depends_on:
+  #     - rostime
+  #   network_mode: host
+  #   volumes:
+  #     - catkin_workspace:/etc/docker/catkin_workspace:consistent
+  #     - shared_data:/etc/docker/shared_data:consistent
+  #     - uav_custom_files:/etc/docker/uav_custom_files:consistent
+  #   env_file:
+  #     - ./stack.env
+  #   tty: true
+  #   command: bash -c "waitForTime && source /etc/docker/catkin_workspace/devel/setup.bash && roslaunch example_package example_package.launch"
+  #
   # starts the node that handles automatic initialization of the system and takeoff
   automatic_start:
     image: ctumrs/mrs_uav_system:${MRS_UAV_SYSTEM_VERSION}
@@ -152,6 +192,7 @@ services:
       - bag_files:/etc/docker/bag_files:consistent
       - shared_data:/etc/docker/shared_data:consistent
       - uav_custom_files:/etc/docker/uav_custom_files:consistent
+      - catkin_workspace:/etc/docker/catkin_workspace:consistent
       - /dev/:/dev/
     command:
       - bash --rcfile /opt/ros/noetic/setup.bash
